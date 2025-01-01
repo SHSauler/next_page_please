@@ -14,7 +14,7 @@ const manifestV2 = {
     "96": "icons/icon-96.png",
     "128": "icons/icon-128.png"
   },
-  applications: {
+  browser_specific_settings: {
     gecko: {
       id: "nextpageplease@consantor.com"
     }

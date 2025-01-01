@@ -15,10 +15,19 @@ const defaultConfig = {
     function createBubble(text, type) {
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
-      bubble.innerHTML = `
-        <span>${text}</span>
-        <button class="remove" data-type="${type}" data-value="${text}">×</button>
-      `;
+      
+      const span = document.createElement('span');
+      span.textContent = text;
+      
+      const button = document.createElement('button');
+      button.className = 'remove';
+      button.textContent = '×';
+      button.dataset.type = type;
+      button.dataset.value = text;
+      
+      bubble.appendChild(span);
+      bubble.appendChild(button);
+      
       return bubble;
     }
   
