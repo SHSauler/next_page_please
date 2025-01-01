@@ -1,4 +1,3 @@
-// build.js
 const fs = require('fs');
 const path = require('path');
 
@@ -80,7 +79,6 @@ const manifestV3 = {
   ]
 };
 
-// Chrome/Firefox API compatibility layer
 const browserPolyfill = `
 const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
 
@@ -119,7 +117,6 @@ function copyFile(source, target) {
 
 function modifyScript(content, version) {
   if (version === 2) {
-    // Add browser polyfill at the start of the file
     return browserPolyfill + content.replace(/chrome\./g, 'browserAPI.');
   }
   return content;
@@ -144,28 +141,23 @@ function build(version) {
   const targetDir = path.join(OUTPUT_DIR, `v${version}`);
   ensureDirectoryExists(targetDir);
 
-  // Copy icons directory
   const sourceIconsDir = path.join(__dirname, 'icons');
   const targetIconsDir = path.join(targetDir, 'icons');
   copyDirectory(sourceIconsDir, targetIconsDir);
 
-  // Copy and transform files
   const files = fs.readdirSync(SOURCE_DIR);
   files.forEach(file => {
     const sourcePath = path.join(SOURCE_DIR, file);
     const targetPath = path.join(targetDir, file);
 
     if (file.endsWith('.js')) {
-      // Modify JS files with compatibility layer
       const content = fs.readFileSync(sourcePath, 'utf8');
       fs.writeFileSync(targetPath, modifyScript(content, version));
     } else {
-      // Copy other files as-is
       copyFile(sourcePath, targetPath);
     }
   });
 
-  // Write appropriate manifest
   const manifest = version === 2 ? manifestV2 : manifestV3;
   fs.writeFileSync(
     path.join(targetDir, 'manifest.json'),
@@ -173,7 +165,6 @@ function build(version) {
   );
 }
 
-// Build both versions
 async function buildAll() {
   await build(2);
   await build(3);

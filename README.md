@@ -2,6 +2,10 @@
   <img src="icons/icon-128.png" alt="Extension Logo">
 </p>
 
+<p align="center">
+  <img src="screenshots/image.png" alt="Extension Configuration Screenshot">
+</p>
+
 # 'Next Page Please' Browser Extension
 
 Navigate through paginated websites using your keyboard's arrow keys. This extension detects "Next" and "Previous" navigation buttons and lets you use your arrow keys to move between pages - no more hunting for tiny navigation links!

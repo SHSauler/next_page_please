@@ -98,10 +98,23 @@
       margin: 1rem 0 0.5rem 0;
       color: #444;
     }
+    .help-text {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin: 0.5rem 0;
+    }
+    .section-help {
+      color: #666;
+      font-size: 0.85rem;
+      margin: 0.25rem 0 0.75rem 0;
+    }
   </style>
 </head>
 <body>
   <h3>Next Page Please Settings</h3>
+  
+  <p class="help-text">Navigate pages using keyboard ← left and → right arrow keys.</p>
   
   <div class="enable-toggle">
     <label>
@@ -130,13 +143,13 @@
   </style>
 
   <div class="tab-container">
-    <div class="tab active" data-tab="keywords">Keywords</div>
-    <div class="tab" data-tab="exclusions">Exclusions</div>
+    <div class="tab active" data-tab="keywords" title="Keywords are the text found in navigation buttons, like 'next' or 'previous'">Keywords</div>
+    <div class="tab" data-tab="exclusions" title="Exclusions help avoid false detections in areas like comment sections or slideshows">Exclusions</div>
   </div>
 
   <div id="keywords" class="tab-content active">
     <div class="section">
-      <h4>Next Page Keywords</h4>
+      <h4 title="Add words commonly found in buttons that go to the next page">Next Page Keywords</h4>
       <div class="bubble-container" id="nextKeywordsList"></div>
       <div class="input-row">
         <input type="text" id="newNextKeyword" placeholder="Add new 'next' keyword...">
@@ -145,7 +158,7 @@
     </div>
 
     <div class="section">
-      <h4>Previous Page Keywords</h4>
+      <h4 title="Add words commonly found in buttons that go to the previous page">Previous Page Keywords</h4>
       <div class="bubble-container" id="prevKeywordsList"></div>
       <div class="input-row">
         <input type="text" id="newPrevKeyword" placeholder="Add new 'previous' keyword...">
@@ -155,6 +168,7 @@
   </div>
 
   <div id="exclusions" class="tab-content">
+    <p class="section-help">Exclude words from navigation detection.</p>
     <div class="bubble-container" id="exclusionList"></div>
     <div class="input-row">
       <input type="text" id="newExclusion" placeholder="Add new exclusion...">
